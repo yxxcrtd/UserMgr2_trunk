@@ -1,0 +1,50 @@
+package cn.edustar.usermgr.service;
+
+import cn.edustar.usermgr.pojos.Ticket;
+import cn.edustar.usermgr.pojos.User;
+import cn.edustar.usermgr.pojos.UserToken;
+
+/**
+ * 用户服务
+ * 
+ * @author Yang XinXin
+ * @version 2.0.0, 2010-09-01 11:00:28
+ */
+public interface UserService {
+	
+	public User getUserByQueryString(String queryString);
+
+	public Ticket createUserTicket(String username);
+
+	public void saveOrUpdate(User user);
+
+	public User getUserByUserTicket(String userTicket);
+
+	public Ticket getTicketByUserTicket(String userTicket);
+
+	public String verifyUser(String username);
+
+	public String verifyAnswer(String username, String answer);
+
+	public String resetPassword(String username, String answer, String password);
+
+	public void updateStatusByUsername(String username, int status);
+
+	public void updatePasswordByUsername(String username, String password);
+
+	public void updateUserInfoByUsername(String username, String trueName, String email, int role);
+	
+	public void resetQuestionAndAnswerByUsername(String username, String question, String answer);
+	
+	public void deleteUser(String username);
+	
+	public int getUserCounts();
+	
+	public void saveOrUpdateUserToken(UserToken userToken);
+	public UserToken getUserTokenByLoginName(String loginName);
+	public UserToken getUserTokenByToken(String token);
+	public void deleteUserToken(UserToken userToken);
+	public void deleteUserTokenByLoginName(String loginName);
+	public void deleteUserTokenByToken(String token);
+	public void deleteUnValidToken();
+}
